@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dysarthria Assistant | Communication Workspace</title>
+<style>
+:root{--navy:#171b45;--purple:#5544dc;--purple2:#7667f2;--lav:#eeedff;--ink:#171a43;--muted:#62678d;--line:#dfddff;--green:#159b69;--amber:#f1a21a}
+*{box-sizing:border-box}body{margin:0;background:#f6f6ff;color:var(--ink);font:15px/1.45 Inter,Segoe UI,Arial,sans-serif}
+.shell{display:grid;grid-template-columns:230px 1fr;min-height:100vh}.side{background:linear-gradient(160deg,#191d49,#252957);color:white;padding:28px 18px;display:flex;flex-direction:column}.brand{text-align:center;margin:8px 0 38px}.brand .wave{font-size:44px;color:#8a7dff}.brand h2{font-size:23px;margin:5px 0}.brand p{color:#d9d8ff;margin:4px}.nav a{display:block;color:#eeeefe;text-decoration:none;padding:13px 16px;border-radius:15px;margin:8px 0}.nav a.active,.nav a:hover{background:#5149a1}.side-note{margin-top:auto;background:#ffffff18;border:1px solid #ffffff20;border-radius:18px;padding:18px;text-align:center;color:#e6e4ff}
+main{padding:24px 30px;max-width:1600px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.ready{display:flex;align-items:center;gap:10px;font-weight:700}.dot{width:11px;height:11px;border-radius:50%;background:#18b77d;box-shadow:0 0 0 4px #18b77d20}.user{color:#343866;font-weight:650}.hero{border-radius:24px;padding:32px 40px;background:linear-gradient(110deg,#d9d8ff,#f0efff 55%,#c4c1ff);position:relative;overflow:hidden;margin-bottom:24px}.hero h1{font-size:clamp(24px,3vw,39px);line-height:1.2;max-width:720px;margin:0 0 8px}.hero p{font-size:19px;color:#514b9c;margin:0}.hero .tag{position:absolute;right:35px;top:34px;background:#fff9;border:1px solid white;border-radius:18px;padding:16px 20px;font-weight:700;color:#38377d}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}.panel{background:white;border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 5px 18px #5550a00c}.panel h2{font-size:23px;margin:0 0 5px}.sub{color:var(--muted);margin:0 0 18px}.tabs{display:flex;background:#f2f1ff;padding:5px;border-radius:15px;gap:5px}.tab{border:0;background:transparent;padding:12px 10px;flex:1;border-radius:12px;font-weight:700;color:#373765;cursor:pointer}.tab.active{background:white;color:var(--purple);box-shadow:0 2px 9px #3325a21a}.recordbox{margin-top:14px;border:1px solid var(--line);border-radius:18px;padding:25px;text-align:center;min-height:290px;background:linear-gradient(180deg,#fff,#fbfaff)}.mic{width:90px;height:90px;border-radius:50%;border:0;background:var(--purple);color:white;font-size:36px;cursor:pointer;box-shadow:0 0 0 13px #eeedff,0 0 0 25px #f7f6ff;margin:8px auto 22px}.mic.recording{background:#d63c61;animation:pulse 1.2s infinite}@keyframes pulse{50%{box-shadow:0 0 0 18px #ffe6ed,0 0 0 30px #fff5f7}}.recordlabel{font-weight:750}.timer{color:var(--muted);margin:8px}.btn{border:0;border-radius:999px;padding:12px 20px;font-weight:750;cursor:pointer;background:var(--purple);color:white}.btn.secondary{background:#eeedff;color:#4338a7}.btn:disabled{opacity:.5;cursor:not-allowed}.actions{display:flex;justify-content:center;gap:10px;margin-top:14px}.upload{margin:15px 0;padding:18px;border:1px dashed #aaa4f3;border-radius:15px;background:#faf9ff}.upload input{max-width:100%}audio{width:100%;margin-top:12px}.hidden{display:none!important}.result{background:#efedff;border:1px solid #ddd9ff;padding:18px;border-radius:16px;font-size:21px;font-weight:750;min-height:78px;display:flex;justify-content:space-between;gap:12px;align-items:center}.score{white-space:nowrap;background:#dcf8ed;color:#08764d;border:1px solid #b8ebd6;border-radius:14px;padding:9px 12px;font-size:15px}.notice{padding:12px 14px;border-radius:14px;margin:12px 0;font-weight:650}.success{background:#e9f8f1;color:#086d48;border:1px solid #c5eedc}.warn{background:#fff4df;color:#895700;border:1px solid #ffd68a}.error{background:#fff0f1;color:#a3233d;border:1px solid #ffc8d1}.clarify{border:1px solid #ffd17b;background:#fff8e9;border-radius:16px;padding:16px;margin-top:14px}.clarify h3{margin:0 0 5px}.choices{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.choices button{background:white;border:1px solid #c9c3ff;color:#302d70;border-radius:999px;padding:9px 18px;cursor:pointer}.final{margin-top:16px;border:1px solid var(--line);border-radius:17px;padding:16px}.finaltop{display:flex;justify-content:space-between;align-items:center;gap:12px}.finaltext{background:#f0efff;padding:13px;border-radius:12px;min-height:48px;flex:1;font-size:18px;font-weight:700}.finalactions{display:flex;gap:9px;margin-top:12px;flex-wrap:wrap}.flow{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:22px 0 4px;color:#343765;font-weight:700}.flow span{color:#7569d7;font-size:20px}.small{font-size:12px;color:#777b9d}.section{margin-top:20px}.field{width:100%;border:1px solid #dcdafa;border-radius:11px;padding:10px;font:inherit;margin:6px 0 10px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.sample-row{display:flex;gap:10px;align-items:center}.sample-row select{flex:1}.footer{font-size:12px;color:#777b9d;text-align:center;margin:16px}
+@media(max-width:950px){.shell{grid-template-columns:1fr}.side{display:none}main{padding:16px}.grid{grid-template-columns:1fr}.hero .tag{display:none}}@media(max-width:520px){.hero{padding:24px}.panel{padding:16px}.two{grid-template-columns:1fr}.result{font-size:17px;display:block}.score{display:inline-block;margin-top:10px}}
+</style></head>
+<body><div class="shell">
+<aside class="side"><div class="brand"><div class="wave">〰</div><h2>Dysarthria<br>Assistant</h2><p>Your Voice, Understood</p></div><nav class="nav"><a class="active" href="#home">⌂　 Home</a><a href="#profile">♙　 Speech Profile</a><a href="#history">◷　 Session</a><a href="#about">ⓘ　 About</a></nav><div class="side-note">♥<br><b>Accessible AI</b><br>for Better Communication</div></aside>
+<main id="home">
+<div class="top"><div class="ready"><i class="dot"></i><span id="systemStatus">System Ready</span></div><div class="user">●　Research Prototype</div></div>
+<header class="hero"><h1>Personalized Agentic AI-Based<br>Communication Interface</h1><p>for Individuals with Dysarthria</p><div class="tag">Speak Freely...<br>We'll Handle the Rest.</div></header>
+<div class="grid">
+<section class="panel"><h2>🎙 Communication Workspace</h2><p class="sub">Record speech, upload an audio file, or test a Kaggle dataset sample.</p>
+<div class="tabs"><button class="tab active" data-tab="record">🎙 Speak</button><button class="tab" data-tab="upload">⇧ Upload Audio</button><button class="tab" data-tab="sample">▶ Use Dataset</button></div>
+<div id="recordPane" class="recordbox"><button id="recordBtn" class="mic" title="Start recording">🎙</button><div class="recordlabel" id="recordLabel">Click to Record</div><div class="timer" id="timer">00:00</div><div class="small">Allow microphone access when your browser asks.</div><div class="actions"><button class="btn" id="stopBtn" disabled>■ Stop Recording</button></div><audio id="recordedAudio" controls class="hidden"></audio></div>
+<div id="uploadPane" class="upload hidden"><b>Select an audio recording</b><input id="audioFile" class="field" type="file" accept="audio/*"><audio id="uploadPreview" controls class="hidden"></audio></div>
+<div id="samplePane" class="upload hidden"><b>Kaggle dataset sample</b><p class="small">Place extracted audio files in the project's <code>dataset/</code> folder, or set DYSARTHRIA_DATASET_DIR.</p><div class="sample-row"><select id="sampleSelect" class="field"><option value="">Loading dataset samples...</option></select><button class="btn secondary" id="refreshSamples">Refresh</button></div><audio id="samplePreview" controls class="hidden"></audio></div>
+<div class="two section"><div><label><b>Speech language</b></label><select id="language" class="field"><option value="en">English</option><option value="ur">Urdu</option><option value="">Auto detect</option></select></div><div><label><b>Recognition model</b></label><input class="field" value="Whisper (local)" disabled></div></div>
+<button class="btn" id="processBtn" style="width:100%;margin-top:6px">✨ Process Speech</button><div id="processMessage" class="small" style="margin-top:10px;text-align:center">Ready when you are.</div>
+</section>
+<section class="panel"><h2>✦ Recognition Result</h2><p class="sub">The recognized message and estimated model confidence appear here.</p>
+<div class="result"><span id="recognizedText">Your recognized speech will appear here.</span><span class="score" id="score">— Confidence</span></div>
+<div id="statusMessage" class="notice success">System ready. Record or choose an audio sample to begin.</div>
+<div id="clarification" class="clarify hidden"><h3>⚠ Clarification Needed</h3><div id="clarifyText">Please confirm the intended message.</div><div class="choices"><button id="confirmBtn">Confirm this message</button><button id="editBtn">Edit message</button></div></div>
+<div class="final"><div class="finaltop"><b>🔊 Final Output</b></div><div id="finalText" class="finaltext" style="margin-top:10px">Your confirmed text will appear here.</div><div class="finalactions"><button class="btn" id="listenBtn">▶ Listen</button><button class="btn secondary" id="copyBtn">↗ Copy Text</button></div></div>
+<div class="section" id="history"><b>Session details</b><div id="sessionDetails" class="small">No audio processed yet.</div></div>
+</section></div>
+<div class="flow"><div>🎙 Speech Input</div><span>→</span><div>🧠 AI Processing</div><span>→</span><div>✓ Confidence Check</div><span>→</span><div>▤ Clarification</div><span>→</span><div>✓ Clear Output</div></div>
+<section class="panel section" id="profile"><h2>♙ Personal Speech Profile</h2><p class="sub">Add words or phrases that the recognizer often misunderstands. Corrections are applied to future transcripts in this browser session.</p><div class="two"><div><label><b>Recognized incorrectly</b></label><input id="wrongWord" class="field" placeholder="e.g. woter"></div><div><label><b>What I meant</b></label><input id="rightWord" class="field" placeholder="e.g. water"></div></div><button class="btn secondary" id="addCorrection">+ Add personalization</button><div id="correctionList" class="small" style="margin-top:10px">No personal corrections added.</div></section>
+<section class="panel section" id="about"><h2>About this research prototype</h2><p class="sub">This prototype demonstrates speech input, dysarthric speech recognition using an open-source Whisper model, user-specific text corrections, confidence-based clarification, and clear text/voice output. Dataset recordings are used for technical testing.</p><p class="small">Research note: confidence is an estimated model-derived indicator, not a clinically validated probability. Results depend on dataset quality, speaker variation, language, and recording conditions. This prototype does not diagnose or treat dysarthria.</p></section>
+<div class="footer">Personalized Agentic AI Communication Interface · Research Prototype</div>
+</main></div>
+<script>
+let activeTab='record', mediaRecorder=null, chunks=[], activeBlob=null, seconds=0, tick=null, latestText='', corrections={}, confirmed=false;
+const $=id=>document.getElementById(id);
+function switchTab(tab){activeTab=tab;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));['record','upload','sample'].forEach(t=>$(t+'Pane').classList.toggle('hidden',t!==tab));activeBlob=null; $('processMessage').textContent='Choose an audio source to continue.';}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+function setMsg(text,type='success'){const el=$('statusMessage');el.textContent=text;el.className='notice '+type}
+$('recordBtn').onclick=async()=>{
+ try{
+  if(!navigator.mediaDevices?.getUserMedia) throw new Error('Microphone recording requires HTTPS or localhost and a supported browser.');
+  const stream=await navigator.mediaDevices.getUserMedia({audio:true});chunks=[];
+  let mime=MediaRecorder.isTypeSupported('audio/webm;codecs=opus')?'audio/webm;codecs=opus':'audio/webm';
+  mediaRecorder=new MediaRecorder(stream,{mimeType:mime});
+  mediaRecorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};
+  mediaRecorder.onstop=()=>{activeBlob=new Blob(chunks,{type:mediaRecorder.mimeType});$('recordedAudio').src=URL.createObjectURL(activeBlob);$('recordedAudio').classList.remove('hidden');stream.getTracks().forEach(t=>t.stop());$('recordLabel').textContent='Recording ready to process';$('recordBtn').classList.remove('recording')};
+  mediaRecorder.start();$('recordBtn').classList.add('recording');$('recordLabel').textContent='Recording...';$('stopBtn').disabled=false;$('recordBtn').disabled=true;seconds=0;
+  tick=setInterval(()=>{seconds++;$('timer').textContent='00:'+String(seconds).padStart(2,'0')},1000);
+ }catch(e){setMsg(e.message,'error')}
+};
+$('stopBtn').onclick=()=>{if(mediaRecorder?.state==='recording'){mediaRecorder.stop();clearInterval(tick);$('stopBtn').disabled=true;$('recordBtn').disabled=false}};
+$('audioFile').onchange=e=>{const f=e.target.files[0];if(f){activeBlob=f;$('uploadPreview').src=URL.createObjectURL(f);$('uploadPreview').classList.remove('hidden');$('processMessage').textContent=f.name+' selected.'}};
+async function loadSamples(){try{const r=await fetch('/api/samples'),items=await r.json();$('sampleSelect').innerHTML='<option value="">Select a dataset audio file</option>'+items.map(x=>`<option value="${encodeURIComponent(x.id)}">${x.name}</option>`).join('');if(!items.length)$('sampleSelect').innerHTML='<option value="">No samples found in dataset/</option>';}catch(e){$('sampleSelect').innerHTML='<option>Could not load samples</option>'}}
+$('refreshSamples').onclick=loadSamples;
+$('sampleSelect').onchange=()=>{const id=$('sampleSelect').value;if(!id)return;const url='/api/sample/'+id.split('/').map(encodeURIComponent).join('/');$('samplePreview').src=url;$('samplePreview').classList.remove('hidden');activeBlob=null;$('processMessage').textContent='Dataset sample selected.'};
+function getActiveFile(){
+ if(activeTab==='record'&&activeBlob)return new File([activeBlob],'recording.webm',{type:activeBlob.type||'audio/webm'});
+ if(activeTab==='upload')return $('audioFile').files[0]||null;
+ if(activeTab==='sample'&&$('sampleSelect').value){return fetch('/api/sample/'+$('sampleSelect').value.split('/').map(encodeURIComponent).join('/')).then(r=>r.blob()).then(b=>new File([b],$('sampleSelect').value.split('/').pop(),{type:b.type||'audio/wav'}))}
+ return null;
+}
+$('processBtn').onclick=async()=>{
+ try{
+  let file=getActiveFile();if(file instanceof Promise)file=await file;
+  if(!file){setMsg('Please record, upload, or select a dataset sample first.','warn');return}
+  $('processBtn').disabled=true;$('processMessage').textContent='Processing audio with the speech-recognition model...';$('systemStatus').textContent='Processing speech...';
+  const form=new FormData();form.append('audio',file,file.name);form.append('language',$('language').value);form.append('profile',JSON.stringify(corrections));
+  const response=await fetch('/api/transcribe',{method:'POST',body:form});const data=await response.json();if(!response.ok)throw new Error(data.error||'Recognition failed');
+  latestText=data.personalized_text;$('recognizedText').textContent=latestText;$('score').textContent=data.confidence+'% Confidence';
+  $('finalText').textContent=latestText;$('clarification').classList.toggle('hidden',!data.needs_clarification);$('clarifyText').textContent=data.clarification_message||'Please confirm that this is the intended message.';
+  setMsg(data.needs_clarification?'Recognition may be uncertain. Please confirm or edit the message.':'Speech recognized. Please review the output before using it.',data.needs_clarification?'warn':'success');
+  $('sessionDetails').textContent=`Language: ${data.language} · Segments: ${data.segments} · Personalization corrections applied: ${data.applied_personalization.length}. ${data.confidence_note}`;
+  confirmed=!data.needs_clarification;$('processMessage').textContent='Processing complete.';$('systemStatus').textContent='System Ready';
+ }catch(e){setMsg(e.message,'error');$('processMessage').textContent='Could not process this audio.';$('systemStatus').textContent='System Ready'}
+ finally{$('processBtn').disabled=false}
+};
+$('confirmBtn').onclick=()=>{$('clarification').classList.add('hidden');$('finalText').textContent=latestText;confirmed=true;setMsg('Message confirmed. Clear output is ready.','success')};
+$('editBtn').onclick=()=>{const edited=prompt('Edit the message to what you intended:',latestText);if(edited!==null&&edited.trim()){latestText=edited.trim();$('recognizedText').textContent=latestText;$('finalText').textContent=latestText;$('clarification').classList.add('hidden');confirmed=true;setMsg('Your corrected message is now the final output.','success')}};
+$('listenBtn').onclick=()=>{const text=$('finalText').textContent;if(!text||text.startsWith('Your confirmed'))return;if(!('speechSynthesis'in window)){setMsg('Text-to-speech is not supported by this browser.','warn');return}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);speechSynthesis.speak(u)};
+$('copyBtn').onclick=async()=>{const t=$('finalText').textContent;if(!t||t.startsWith('Your confirmed'))return;try{await navigator.clipboard.writeText(t);setMsg('Final text copied to clipboard.','success')}catch(e){setMsg('Clipboard access is unavailable. Select and copy the text manually.','warn')}};
+$('addCorrection').onclick=()=>{const w=$('wrongWord').value.trim(),r=$('rightWord').value.trim();if(!w||!r)return;corrections[w]=r;$('wrongWord').value='';$('rightWord').value='';$('correctionList').textContent=Object.entries(corrections).map(([a,b])=>`${a} → ${b}`).join('   |   ');};
+loadSamples();
+</script></body></html>
