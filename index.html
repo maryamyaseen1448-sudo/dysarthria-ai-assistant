@@ -1,8 +1,7 @@
-<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Dysarthria Assistant | Communication Workspace</title>
+<title>Human-in-the-Loop AI Communication Interface | Dysarthria</title>
 <style>
 :root{--navy:#171b45;--purple:#5544dc;--purple2:#7667f2;--lav:#eeedff;--ink:#171a43;--muted:#62678d;--line:#dfddff;--green:#159b69;--amber:#f1a21a}
 *{box-sizing:border-box}body{margin:0;background:#f6f6ff;color:var(--ink);font:15px/1.45 Inter,Segoe UI,Arial,sans-serif}
@@ -15,7 +14,7 @@ main{padding:24px 30px;max-width:1600px;width:100%;margin:auto}.top{display:flex
 <aside class="side"><div class="brand"><div class="wave">〰</div><h2>Dysarthria<br>Assistant</h2><p>Your Voice, Understood</p></div><nav class="nav"><a class="active" href="#home">⌂　 Home</a><a href="#profile">♙　 Speech Profile</a><a href="#history">◷　 Session</a><a href="#about">ⓘ　 About</a></nav><div class="side-note">♥<br><b>Accessible AI</b><br>for Better Communication</div></aside>
 <main id="home">
 <div class="top"><div class="ready"><i class="dot"></i><span id="systemStatus">System Ready</span></div><div class="user">●　Research Prototype</div></div>
-<header class="hero"><h1>Personalized Agentic AI-Based<br>Communication Interface</h1><p>for Individuals with Dysarthria</p><div class="tag">Speak Freely...<br>We'll Handle the Rest.</div></header>
+<header class="hero"><h1>Human-in-the-Loop AI<br>Communication Interface</h1><p>for Individuals with Dysarthria</p><div class="tag">Speak Freely...<br>We'll Handle the Rest.</div></header>
 <div class="grid">
 <section class="panel"><h2>🎙 Communication Workspace</h2><p class="sub">Record speech, upload an audio file, or test a Kaggle dataset sample.</p>
 <div class="tabs"><button class="tab active" data-tab="record">🎙 Speak</button><button class="tab" data-tab="upload">⇧ Upload Audio</button><button class="tab" data-tab="sample">▶ Use Dataset</button></div>
@@ -35,7 +34,7 @@ main{padding:24px 30px;max-width:1600px;width:100%;margin:auto}.top{display:flex
 <div class="flow"><div>🎙 Speech Input</div><span>→</span><div>🧠 AI Processing</div><span>→</span><div>✓ Confidence Check</div><span>→</span><div>▤ Clarification</div><span>→</span><div>✓ Clear Output</div></div>
 <section class="panel section" id="profile"><h2>♙ Personal Speech Profile</h2><p class="sub">Add words or phrases that the recognizer often misunderstands. Corrections are applied to future transcripts in this browser session.</p><div class="two"><div><label><b>Recognized incorrectly</b></label><input id="wrongWord" class="field" placeholder="e.g. woter"></div><div><label><b>What I meant</b></label><input id="rightWord" class="field" placeholder="e.g. water"></div></div><button class="btn secondary" id="addCorrection">+ Add personalization</button><div id="correctionList" class="small" style="margin-top:10px">No personal corrections added.</div></section>
 <section class="panel section" id="about"><h2>About this research prototype</h2><p class="sub">This prototype demonstrates speech input, dysarthric speech recognition using an open-source Whisper model, user-specific text corrections, confidence-based clarification, and clear text/voice output. Dataset recordings are used for technical testing.</p><p class="small">Research note: confidence is an estimated model-derived indicator, not a clinically validated probability. Results depend on dataset quality, speaker variation, language, and recording conditions. This prototype does not diagnose or treat dysarthria.</p></section>
-<div class="footer">Personalized Agentic AI Communication Interface · Research Prototype</div>
+<div class="footer">Human-in-the-Loop AI Communication Interface · Research Prototype</div>
 </main></div>
 <script>
 let activeTab='record', mediaRecorder=null, chunks=[], activeBlob=null, seconds=0, tick=null, latestText='', corrections={}, confirmed=false;
